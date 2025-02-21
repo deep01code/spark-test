@@ -1,0 +1,17 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.apache.spark:spark-core_2.12:3.4.0'
+    implementation 'org.apache.spark:spark-sql_2.12:3.4.0'
+}
+
+application {
+    mainClassName = 'Main' // Ensure this matches your main class
+}

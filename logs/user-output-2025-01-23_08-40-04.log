@@ -1,0 +1,45 @@
+2025-01-23 08:40:30 PING spark-master (172.18.0.3) 56(84) bytes of data.
+2025-01-23 08:40:31 64 bytes from spark-master.spark-network (172.18.0.3): icmp_seq=1 ttl=64 time=0.276 ms
+2025-01-23 08:40:32 64 bytes from spark-master.spark-network (172.18.0.3): icmp_seq=2 ttl=64 time=0.056 ms
+2025-01-23 08:40:33 64 bytes from spark-master.spark-network (172.18.0.3): icmp_seq=3 ttl=64 time=0.056 ms
+2025-01-23 08:40:33 
+2025-01-23 08:40:33 --- spark-master ping statistics ---
+2025-01-23 08:40:33 3 packets transmitted, 3 received, 0% packet loss, time 2079ms
+2025-01-23 08:40:33 rtt min/avg/max/mdev = 0.056/0.129/0.276/0.103 ms
+2025-01-23 08:40:33 Starting a Gradle Daemon (subsequent builds will be faster)
+2025-01-23 08:41:09 > Task :compileJava
+2025-01-23 08:41:12 > Task :processResources NO-SOURCE
+2025-01-23 08:41:12 > Task :classes
+2025-01-23 08:41:16 
+2025-01-23 08:41:16 > Task :run
+2025-01-23 08:41:20 Connected to Spark Master: spark://spark-master:7077
+2025-01-23 08:41:26 DataFrame created from a List:
+2025-01-23 08:41:28 +---+-------+
+2025-01-23 08:41:28 |age|   name|
+2025-01-23 08:41:28 +---+-------+
+2025-01-23 08:41:28 | 30|  Alice|
+2025-01-23 08:41:28 | 35|    Bob|
+2025-01-23 08:41:28 | 25|Charlie|
+2025-01-23 08:41:28 | 40|  Diana|
+2025-01-23 08:41:28 +---+-------+
+2025-01-23 08:41:28 
+2025-01-23 08:41:28 Filtered Data (age > 30):
+2025-01-23 08:41:28 +---+-----+
+2025-01-23 08:41:28 |age| name|
+2025-01-23 08:41:28 +---+-----+
+2025-01-23 08:41:28 | 35|  Bob|
+2025-01-23 08:41:28 | 40|Diana|
+2025-01-23 08:41:28 +---+-----+
+2025-01-23 08:41:28 
+2025-01-23 08:41:28 Average Age:
+2025-01-23 08:41:28 
+2025-01-23 08:41:28 [Incubating] Problems report is available at: file:///app/build/reports/problems/problems-report.html
+2025-01-23 08:41:28 
+2025-01-23 08:41:28 Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+2025-01-23 08:41:28 
+2025-01-23 08:41:28 You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+2025-01-23 08:41:28 
+2025-01-23 08:41:28 For more on this, please refer to https://docs.gradle.org/8.12/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+2025-01-23 08:41:28 
+2025-01-23 08:41:28 BUILD SUCCESSFUL in 55s
+2025-01-23 08:41:28 2 actionable tasks: 2 executed
