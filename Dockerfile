@@ -1,14 +1,23 @@
-# Use Gradle with OpenJDK for dynamic builds
+# Use a Gradle-based JDK image
 FROM gradle:jdk11 AS builder
 
-# Set working directory
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copy the Gradle build file dynamically at runtime
-COPY build.gradle /app/
+# Copy everything from the repo
+COPY . .
 
-# Create necessary directories for source files
-RUN mkdir -p /app/src/main/java
+# Build the project using Gradle
+RUN gradle clean build --no-daemon
 
-# Run Gradle commands dynamically at runtime
-ENTRYPOINT ["gradle", "run", "--no-daemon"]
+# Use OpenJDK as the final runtime image
+FROM openjdk:11-jre-slim
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the built JAR from the builder stage
+COPY --from=builder /app/build/libs/*.jar app.jar
+
+# Command to run the application
+CMD ["java", "-jar", "app.jar"]

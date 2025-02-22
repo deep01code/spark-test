@@ -3,23 +3,46 @@ plugins {
     id 'application'
 }
 
+group = 'org.ksu'
+version = '1.0-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(11))  // Ensures Java 11 compatibility
+    }
+}
+
+application {
+    mainClass = 'org.ksu.PstMajorApplication'  // Update this to your actual main class
+}
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation 'org.apache.spark:spark-core_2.12:3.4.0'
-    implementation 'org.apache.spark:spark-sql_2.12:3.4.0'
+    implementation 'org.apache.spark:spark-core_2.12:3.3.0'  // Update to match your Spark cluster version
+    implementation 'org.apache.spark:spark-sql_2.12:3.3.0'
+
+    implementation 'org.slf4j:slf4j-api:1.7.32'
+    implementation 'org.slf4j:slf4j-simple:1.7.32'
+
+    testImplementation 'junit:junit:4.13.2'
 }
 
-application {
-    mainClass = 'Main' // ✅ Update this based on package structure
-}
-
-// ✅ Ensure compiled classes are included in runtime classpath
-tasks.named('run') {
-    doFirst {
-        println("🔥 Running Java Spark Job...")
+tasks.named('jar') {
+    manifest {
+        attributes 'Main-Class': 'org.ksu.PstMajorApplication'  // Ensure this matches your main class
     }
-    classpath = sourceSets.main.runtimeClasspath
+}
+
+tasks.register('fatJar', Jar) {
+    archiveBaseName.set('app')
+    archiveVersion.set('')
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    with jar
 }
