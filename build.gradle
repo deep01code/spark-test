@@ -13,5 +13,13 @@ dependencies {
 }
 
 application {
-    mainClassName = 'Main' // Ensure this matches your main class
+    mainClass = 'Main' // ✅ Update this based on package structure
+}
+
+// ✅ Ensure compiled classes are included in runtime classpath
+tasks.named('run') {
+    doFirst {
+        println("🔥 Running Java Spark Job...")
+    }
+    classpath = sourceSets.main.runtimeClasspath
 }
