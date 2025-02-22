@@ -12,8 +12,8 @@ FROM openjdk:11-jre-slim
 
 WORKDIR /app
 
-# Copy only the compiled jar from the builder stage
-COPY --from=builder /workspace/build/libs/*.jar app.jar
+# Copy only the compiled JAR from the builder stage
+COPY --from=builder /workspace/build/libs/app.jar app.jar
 
 # Set the default command
 CMD ["java", "-jar", "app.jar"]
