@@ -7,7 +7,19 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        String sparkMaster = "spark://spark-master:7077";
+
+        //Usage: java -Dspark.master.name=<name> -Dspark.master.port=<port> -jar myapp.jar
+        String sparkMasterName = System.getProperty("clusterName");
+        String sparkMasterPort = System.getProperty("masterPort");
+
+        // Validate required properties
+        if (sparkMasterName == null || sparkMasterPort == null) {
+            System.err.println("ERROR: Missing required system properties!");
+            System.err.println("Usage: java -Dspark.master.name=<name> -Dspark.master.port=<port> -jar myapp.jar");
+            System.exit(1);
+        }
+
+        String sparkMaster = "spark://"+sparkMasterName+":"+sparkMasterPort;
 
         // Initialize Spark session
         SparkSession spark = SparkSession.builder()
