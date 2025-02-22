@@ -7,14 +7,13 @@ group = 'org.ksu'
 version = '1.0-SNAPSHOT'
 
 java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(11))  // Ensures Java 11 compatibility
-    }
+
 }
 
 application {
     mainClass = 'org.ksu.PstMajorApplication'  // Update this to your actual main class
 }
+
 
 repositories {
     mavenCentral()
