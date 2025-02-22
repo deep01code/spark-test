@@ -1,23 +1,19 @@
-# Use a Gradle-based JDK image
+# Use a Gradle base image for the build stage
 FROM gradle:jdk11 AS builder
 
-# Set the working directory inside the container
-WORKDIR /app
-
-# Copy everything from the repo
+WORKDIR /workspace
 COPY . .
 
-# Build the project using Gradle
+# Build the project (avoid running this in runtime)
 RUN gradle clean build --no-daemon
 
-# Use OpenJDK as the final runtime image
+# Use a lightweight Java runtime image
 FROM openjdk:11-jre-slim
 
-# Set the working directory
 WORKDIR /app
 
-# Copy the built JAR from the builder stage
-COPY --from=builder /app/build/libs/*.jar app.jar
+# Copy only the compiled jar from the builder stage
+COPY --from=builder /workspace/build/libs/*.jar app.jar
 
-# Command to run the application
+# Set the default command
 CMD ["java", "-jar", "app.jar"]
