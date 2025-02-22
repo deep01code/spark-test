@@ -14,8 +14,8 @@ public class Main {
 
         // Validate required properties
         if (sparkMasterName == null || sparkMasterPort == null) {
-            System.err.println("ERROR: Missing required system properties!");
-            System.err.println("Usage: java -Dspark.master.name=<name> -Dspark.master.port=<port> -jar myapp.jar");
+           // System.err.println("ERROR: Missing required system properties!");
+            //System.err.println("Usage: java -Dspark.master.name=<name> -Dspark.master.port=<port> -jar myapp.jar");
             System.exit(1);
         }
 
