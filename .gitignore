@@ -1,0 +1,14 @@
+# Ignore build files
+/build/
+*.log
+
+.gradle
+
+
+# Ignore dependency folders
+node_modules/
+target/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
