@@ -4,6 +4,7 @@
 
 .gradle
 
+
 # Ignore dependency folders
 node_modules/
 target/
