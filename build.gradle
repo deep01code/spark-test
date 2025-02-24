@@ -6,14 +6,9 @@ plugins {
 group = 'org.ksu'
 version = '1.0-SNAPSHOT'
 
-java {
-
-}
-
 application {
-    mainClass = 'org.ksu.PstMajorApplication'  // Update this to your actual main class
+    mainClass = 'org.ksu.PstMajorApplication'  // Ensure this matches your main class
 }
-
 
 repositories {
     mavenCentral()
@@ -29,19 +24,8 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
 }
 
-tasks.named('jar') {
+jar {
     manifest {
-        attributes 'Main-Class': 'org.ksu.PstMajorApplication'  // Ensure this matches your main class
+        attributes 'Main-Class': application.mainClass.get()
     }
-}
-
-tasks.register('fatJar', Jar) {
-    archiveBaseName.set('app')
-    archiveVersion.set('')
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-
-    from {
-        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
-    }
-    with jar
 }
