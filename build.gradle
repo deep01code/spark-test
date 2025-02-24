@@ -1,13 +1,13 @@
 plugins {
-    id 'java'
-    id 'application'
+    id "java"
+    id "application"
 }
 
-group = 'org.ksu'
-version = '1.0-SNAPSHOT'
+group = "org.ksu"
+version = "1.0-SNAPSHOT"
 
 application {
-    mainClass = 'org.ksu.PstMajorApplication'  // Ensure this matches your main class
+    mainClass = "org.ksu.PstMajorApplication"
 }
 
 repositories {
@@ -15,17 +15,24 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.apache.spark:spark-core_2.12:3.3.0'  // Update to match your Spark cluster version
-    implementation 'org.apache.spark:spark-sql_2.12:3.3.0'
+    implementation "org.apache.spark:spark-core_2.12:3.3.0"
+    implementation "org.apache.spark:spark-sql_2.12:3.3.0"
 
-    implementation 'org.slf4j:slf4j-api:1.7.32'
-    implementation 'org.slf4j:slf4j-simple:1.7.32'
+    implementation "org.slf4j:slf4j-api:1.7.32"
+    implementation "org.slf4j:slf4j-simple:1.7.32"
 
-    testImplementation 'junit:junit:4.13.2'
+    testImplementation "junit:junit:4.13.2"
 }
 
 jar {
     manifest {
-        attributes 'Main-Class': application.mainClass.get()
+        attributes "Main-Class": application.mainClass.get()
+    }
+
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    zip64 = true  // Fixes the "more than 65535 entries" error
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
