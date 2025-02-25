@@ -15,8 +15,8 @@ repositories {
 }
 
 dependencies {
-    implementation "org.apache.spark:spark-core_2.12:3.3.0"
-    implementation "org.apache.spark:spark-sql_2.12:3.3.0"
+    implementation "org.apache.spark:spark-core_2.12:3.5.4"
+    implementation "org.apache.spark:spark-sql_2.12:3.5.4"
 
     implementation "org.slf4j:slf4j-api:1.7.32"
     implementation "org.slf4j:slf4j-simple:1.7.32"
