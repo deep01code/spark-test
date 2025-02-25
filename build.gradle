@@ -7,7 +7,7 @@ group = "org.ksu"
 version = "1.0-SNAPSHOT"
 
 application {
-    mainClass = "org.ksu.PstMajorApplication"
+    mainClass = "sa.edu.ksubench.Main"
 }
 
 repositories {
