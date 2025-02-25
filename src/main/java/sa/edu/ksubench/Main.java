@@ -50,7 +50,7 @@ public class Main {
         // Example 3: Perform aggregations
         Dataset<Row> averageAge = data.agg(functions.avg("age").alias("Average Age"));
         System.out.println("Average Age:");
-        //averageAge.show();
+        averageAge.show();
 
         // Stop the Spark session
         spark.stop();
